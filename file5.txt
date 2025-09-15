@@ -1,6 +1,4 @@
 This file-5 is for testing purposes.
-<<<<<<< HEAD
-This is a change from conflict-branch1.
-=======
+This is a change from conflict-branch1
 This is a change from conflict-branch2.
->>>>>>> conflict-branch2
+
