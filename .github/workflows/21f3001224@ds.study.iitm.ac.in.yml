@@ -1,0 +1,27 @@
+name: 21f3001224@ds.study.iitm.ac.in
+
+on:
+  workflow_dispatch:
+
+jobs:
+  commit-job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "21f3001224@ds.study.iitm.ac.in"
+          git config --local user.name "Sreenidhi IITM Bot"
+
+      - name: Create Commit
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "Update: $(date)" >> auto.txt
+          git add auto.txt
+          git commit -m "Automated commit for grading" || echo "No changes"
+          git push
