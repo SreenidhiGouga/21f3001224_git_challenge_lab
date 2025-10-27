@@ -2,11 +2,11 @@ name: 21f3001224@ds.study.iitm.ac.in
 
 on:
   schedule:
-    - cron: "30 7 * * *"   # Run daily at 07:30 UTC
-  workflow_dispatch:       # Manual trigger allowed
+    - cron: "30 7 * * *"
+  workflow_dispatch:
 
 jobs:
-  daily-commit:
+  commit-job:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,7 +19,7 @@ jobs:
         run: |
           git config --local user.email "21f3001224@ds.study.iitm.ac.in"
           git config --local user.name "GitHub Actions Bot"
-          date > latest_update.txt
-          git add latest_update.txt
-          git commit -m "Daily update [skip ci]" || echo "Nothing changed"
+          echo "Updated on $(date)" >> daily.txt
+          git add daily.txt
+          git commit -m "Daily update [skip ci]" || echo "No changes to commit"
           git push
